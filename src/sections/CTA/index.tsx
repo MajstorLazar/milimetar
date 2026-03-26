@@ -17,7 +17,6 @@ export const CTA = () => {
             <div className="text-base items-center box-border caret-transparent gap-x-[15px] flex flex-col justify-center leading-4 gap-y-[15px] md:text-xl md:flex-row md:leading-5">
               <a
                 href="tel:+381607120698"
-                onClick={(e) => e.preventDefault()}
                 className="relative text-base font-bold items-center bg-white box-border caret-transparent gap-x-2.5 flex justify-center leading-[17.6px] max-w-full min-h-[auto] min-w-[auto] gap-y-2.5 z-[1] overflow-hidden px-6 py-3.5 rounded-[5px] md:text-lg md:leading-[19.8px] md:px-8 md:py-[18px] hover:bg-yellow-600 hover:text-white transition-all duration-300 btn-press"
               >
                 <img src="https://c.animaapp.com/mn6pgklgyCd5dZ/assets/icon-2.svg" alt="" className="inline h-4 w-4" />
