@@ -4,7 +4,7 @@
   "type": "module",
   "name": "milimetar-craft",
   "description": "Landing stranica za Milimetar Craft namestaj po meri",
-  "homepage": "https://majstorlazar.github.io/milimetar/",
+  "homepage": "https://milimetar.rs",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
