@@ -2,4 +2,4 @@
 
 React + Tailwind
 
-Github Pagesgit 
+Github Pages
