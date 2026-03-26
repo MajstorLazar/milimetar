@@ -16,10 +16,10 @@ export const NavbarBookButton = () => {
         </div>
         <div className="relative text-base items-center box-border caret-transparent gap-x-0 flex flex-col h-5 justify-start leading-[17.6px] gap-y-0 z-[2] overflow-hidden md:text-lg md:leading-[19.8px]">
           <div className="text-base box-border caret-transparent leading-[17.6px] md:text-lg md:leading-[19.8px]">
-            Zakazite Poziv
+            Pozovite me
           </div>
           <div className="text-base box-border caret-transparent leading-[17.6px] md:text-lg md:leading-[19.8px]">
-            Zakazite Poziv
+            Pozovite me
           </div>
         </div>
         <div className="absolute text-base bg-black box-border caret-transparent shrink-0 h-[0%] leading-[17.6px] w-[0%] z-[1] rounded-3xl md:text-lg md:leading-[19.8px]"></div>

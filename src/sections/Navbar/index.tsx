@@ -117,14 +117,14 @@ export const Navbar = () => {
                 </a>
               ))}
               <a
-                href="#contact"
+                href="tel:+381607120698"
                 onClick={(e) => {
                   e.preventDefault();
                   handleNavClick("#contact");
                 }}
                 className="relative font-bold items-center bg-white flex justify-center leading-[17.6px] gap-x-2.5 z-[1] overflow-hidden px-6 py-3.5 rounded-[5px] mt-2 hover:bg-yellow-600 transition-all duration-300 btn-press"
               >
-                <span className="text-base font-bold whitespace-nowrap">Zakazite Poziv</span>
+                <span className="text-base font-bold whitespace-nowrap">Pozovite me</span>
               </a>
             </div>
           </div>
