@@ -99,7 +99,7 @@ export const Navbar = () => {
           {/* Mobile menu */}
           <div
             className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-              menuOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
+              menuOpen ? "max-h-[500px] opacity-100 pointer-events-auto" : "max-h-0 opacity-0 pointer-events-none"
             }`}
           >
             <div className="absolute left-5 right-5 backdrop-blur-[20px] bg-black flex flex-col gap-y-2 p-5 rounded-[10px] top-[calc(100%+4px)] animate-slide-down shadow-xl z-50">

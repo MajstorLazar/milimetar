@@ -6,10 +6,9 @@
   "description": "Landing stranica za Milimetar Craft namestaj po meri",
   "homepage": ".",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+  "dev": "vite",
+  "build": "vite build",
+  "preview": "vite preview"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.1.0",
