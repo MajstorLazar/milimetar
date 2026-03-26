@@ -14,7 +14,10 @@ export const CTAFooter = () => {
           </a>
           <div className="text-base box-border caret-transparent leading-4 max-w-full w-full md:text-xl md:leading-5 md:max-w-[220px]">
             <p className="text-white text-base box-border caret-transparent leading-[22.4px] md:text-lg md:leading-[25.2px]">
-              Nameštaj po meri - Svaki milimetar je važan
+              Nameštaj po meri
+            </p>
+            <p className="text-white text-base box-border caret-transparent leading-[22.4px] md:text-lg md:leading-[25.2px]">
+              Novi Sad
             </p>
           </div>
         </div>
