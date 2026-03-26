@@ -170,7 +170,7 @@ export const Hero = () => {
                 { href: "#projects", img: "https://c.animaapp.com/mn6pgklgyCd5dZ/assets/69178b09aa56e11bb14ac785_thumb-1.webp", title: "Moćni mali sto za studio apartman" },
                 { href: "#projects", img: "https://c.animaapp.com/mn6pgklgyCd5dZ/assets/69199670c079ee11bf97d6b5_thumb-2.webp", title: "Šarmantni klub sto za dnevnu sobu" },
                 { href: "#projects", img: "https://c.animaapp.com/mn6pgklgyCd5dZ/assets/6919969d44e8b10312ed6ff5_thumb-3.webp", title: "Sto za izvršnu kancelariju" },
-                { href: "#projects", img: "https://c.animaapp.com/mn6pgklgyCd5dZ/assets/691996c5d8b594e5e8f984f8_thumb-4.webp", title: "Fotelje za obalnu vilu" },
+                { href: "#projects", img: "https://c.animaapp.com/mn6pgklgyCd5dZ/assets/691996c5d8b594e5e8f984f8_thumb-4.webp", title: "Klupica uklopljena u okruženje" },
               ].map((p, i) => (
                 <div key={i} role="listitem" className="reveal" style={{ transitionDelay: `${i * 0.1}s` }}>
                   <div className="relative text-base box-border caret-transparent leading-4 md:text-xl md:leading-5 group overflow-hidden rounded-[5px]">
