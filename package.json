@@ -2,7 +2,7 @@
   "version": "1.0.0",
   "source": "./index.html",
   "type": "module",
-  "name": "Milimetar Craft",
+  "name": "milimetar-craft",
   "description": "Landing stranica za Milimetar Craft namestaj po meri",
   "homepage": "https://majstorlazar.github.io/milimetar/",
   "scripts": {
@@ -22,6 +22,7 @@
     "react-router-dom": "^6.8.1"
   },
   "devDependencies": {
+    "@types/node": "^25.5.0",
     "@types/react": "18.2.0",
     "@types/react-dom": "18.2.0",
     "@vitejs/plugin-react": "4.3.4",
