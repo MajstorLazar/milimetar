@@ -1,131 +1,155 @@
 import { useState, useEffect } from "react";
 import { NavbarLogo } from "@/sections/Navbar/components/NavbarLogo";
+
 const NAV_LINKS = [
   { label: "Radionica", href: "#about" },
   { label: "Projekti", href: "#projects" },
   { label: "Usluge", href: "#services" },
-  /*{ label: "Blog", href: "#blog" },*/
   { label: "Česta pitanja", href: "#faq" },
 ];
 
 export const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    
+    window.addEventListener('resize', handleResize);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
-  const handleNavClick = (href: string) => {
-    setMenuOpen(false);
-    if (href.startsWith("#")) {
-      const el = document.querySelector(href);
-      if (el) el.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   return (
-    <div
-      className={`fixed text-base box-border leading-4 w-full z-50 py-[15px] left-0 top-0 transition-all duration-500 md:text-xl md:leading-5 md:py-6 ${
-        scrolled ? "bg-black/70 backdrop-blur-md py-2 md:py-3" : ""
-      }`}
-    >
-      <div className="text-base box-border leading-4 px-5 md:text-xl md:leading-5">
-        <div className="text-base box-border leading-4 max-w-[1296px] w-full mx-auto md:text-xl md:leading-5">
-          <div
-            className={`relative text-base items-center box-border flex justify-between leading-4 pl-3.5 pr-3 py-3 rounded-[10px] transition-all duration-300 md:text-xl md:leading-5 md:pl-[18px] ${
-              scrolled
-                ? "bg-black/50 border border-white/10"
-                : "bg-neutral-100/10 border border-white/20"
-            }`}
-          >
-          <NavbarLogo />
-            {/* Desktop nav links */}
-            <div className="hidden md:flex items-center gap-x-[34px]">
-              {NAV_LINKS.map((link) => (
+    <header className="fixed top-0 left-0 right-0 z-[100] w-full">
+      <div className="px-5 pt-5 pb-3">
+        <div style={{ 
+          maxWidth: '1296px', 
+          margin: '0 auto',
+          padding: '12px 20px',
+          backgroundColor: scrolled ? '#000' : 'rgba(255, 255, 255, 0.1)',
+          borderRadius: '12px',
+          border: scrolled ? 'none' : '1px solid rgba(255, 255, 255, 0.2)',
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            {/* Logo */}
+            <NavbarLogo />
+
+            {!isMobile && (
+              /* Desktop Navigation + CTA - Grouped together, pushed right */
+              <div style={{ marginLeft: 'auto', display: 'flex', gap: '34px', alignItems: 'center' }}>
+                {NAV_LINKS.map((link) => (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    style={{ 
+                      color: '#fff', 
+                      fontSize: '18px',
+                      lineHeight: '25.2px',
+                      textDecoration: 'none'
+                    }}
+                    className="hover:text-yellow-600 transition-colors duration-200"
+                  >
+                    {link.label}
+                  </a>
+                ))}
+                {/* Desktop CTA Button */}
                 <a
-                  key={link.label}
-                  href={link.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleNavClick(link.href);
+                  href="tel:+381607120698"
+                  className="bg-white hover:bg-yellow-600 text-black font-bold px-6 py-3 rounded transition-colors duration-300"
+                  style={{ 
+                    display: 'flex', 
+                    alignItems: 'center', 
+                    justifyContent: 'center',
+                    fontSize: '14px',
+                    lineHeight: '17.6px'
                   }}
-                  className={`text-white text-lg leading-[25.2px] transition-all duration-200 hover:text-yellow-600 relative after:absolute after:bottom-[-2px] after:left-0 after:h-[1px] after:w-0 after:bg-yellow-600 after:transition-all after:duration-300 hover:after:w-full ${
-                    activeSection === link.href.slice(1) ? "text-yellow-600 after:w-full" : ""
-                  }`}
                 >
-                  {link.label}
+                  Pozovite Me
                 </a>
-              ))}
-            </div>
+              </div>
+            )}
 
-            {/* Desktop Book */}
-            <div className="flex items-center gap-x-[15px]">
-              <a
-                href="tel:+381607120698"
-                className="hidden md:flex relative font-bold items-center bg-white gap-x-2.5 justify-center leading-[17.6px] max-w-full gap-y-2.5 z-[1] overflow-hidden px-6 py-3 rounded-[5px] text-base hover:bg-yellow-600 transition-all duration-300 btn-press group"
-              >
-                <span className="relative z-[2] whitespace-nowrap font-bold text-sm">Pozovite Me</span>
-              </a>
-
-              {/* Mobile hamburger */}
+            {isMobile && (
+              /* Mobile Menu Toggle Button */
               <button
                 onClick={() => setMenuOpen(!menuOpen)}
-                className="md:hidden flex flex-col items-center justify-center gap-y-1 w-10 h-10 bg-white rounded shrink-0 hover:bg-neutral-100 transition-colors duration-200"
-                aria-label="Toggle menu"
+                className="bg-white rounded p-2 hover:bg-neutral-100 transition-colors flex items-center justify-center"
+                style={{ width: '36px', height: '36px', marginLeft: 'auto' }}
+                aria-label={menuOpen ? "Close menu" : "Open menu"}
               >
-                <span
-                  className={`block bg-black h-0.5 w-4 transition-all duration-300 ${
-                    menuOpen ? "rotate-45 translate-y-[6px]" : ""
-                  }`}
-                />
-                <span
-                  className={`block bg-black h-0.5 w-4 transition-all duration-300 ${
-                    menuOpen ? "opacity-0 scale-x-0" : ""
-                  }`}
-                />
-                <span
-                  className={`block bg-black h-0.5 w-4 transition-all duration-300 ${
-                    menuOpen ? "-rotate-45 -translate-y-[6px]" : ""
-                  }`}
-                />
+                {menuOpen ? (
+                  // X Close Button - SVG Icon
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 6L18 18M6 18L18 6" stroke="#000" strokeWidth="2.5" strokeLinecap="round"/>
+                  </svg>
+                ) : (
+                  // Hamburger Icon - SVG Icon
+                  <svg width="18" height="14" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1.5 2H16.5M1.5 7H16.5M1.5 12H16.5" stroke="#000" strokeWidth="2" strokeLinecap="round"/>
+                  </svg>
+                )}
               </button>
-            </div>
+            )}
           </div>
 
-          {/* Mobile menu */}
-          <div
-            className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-              menuOpen ? "max-h-[500px] opacity-100 pointer-events-auto" : "max-h-0 opacity-0 pointer-events-none"
-            }`}
-          >
-            <div className="absolute left-5 right-5 backdrop-blur-[20px] bg-black flex flex-col gap-y-2 p-5 rounded-[10px] top-[calc(100%+4px)] animate-slide-down shadow-xl z-50">
-              {NAV_LINKS.map((link) => (
+          {isMobile && menuOpen && (
+            /* Mobile Menu - Separated from navbar */
+            <div style={{ 
+              position: 'absolute', 
+              top: '100%', 
+              left: '20px',
+              right: '20px',
+              backgroundColor: '#000',
+              padding: '20px',
+              borderRadius: '12px',
+              zIndex: 99
+            }}>
+              {NAV_LINKS.map((link, index) => (
                 <a
                   key={link.label}
                   href={link.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleNavClick(link.href);
+                  onClick={() => setMenuOpen(false)}
+                  className="block hover:text-yellow-600 transition-colors"
+                  style={{ 
+                    color: '#fff', 
+                    fontSize: '18px',
+                    lineHeight: '25.2px',
+                    textDecoration: 'none',
+                    padding: '12px 0',
+                    borderBottom: index < NAV_LINKS.length - 1 ? '1px solid rgba(255, 255, 255, 0.2)' : 'none'
                   }}
-                  className="text-white text-base leading-[22.4px] py-[5px] w-full hover:text-yellow-600 transition-colors duration-200 border-b border-white/10 last:border-0 pb-3"
                 >
                   {link.label}
                 </a>
               ))}
               <a
                 href="tel:+381607120698"
-                className="relative font-bold items-center bg-white flex justify-center leading-[17.6px] gap-x-2.5 z-[1] overflow-hidden px-6 py-3.5 rounded-[5px] mt-2 hover:bg-yellow-600 transition-all duration-300 btn-press"
+                className="block bg-white hover:bg-yellow-600 text-black font-bold px-6 py-3.5 rounded transition-colors duration-300 mt-4"
+                style={{ 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  justifyContent: 'center',
+                  fontSize: '18px',
+                  lineHeight: '25.2px'
+                }}
               >
-                <span className="text-base font-bold whitespace-nowrap">Pozovite me</span>
+                Pozovite me
               </a>
             </div>
-          </div>
+          )}
         </div>
       </div>
-    </div>
+    </header>
   );
 };

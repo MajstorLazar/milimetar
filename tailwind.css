@@ -3,9 +3,9 @@
 
 @tailwind base;
 
-/* Smooth scrolling */
+/* Scroll behavior - removed smooth to prevent scroll lock at boundaries */
 html {
-  scroll-behavior: smooth;
+  /* scroll-behavior: smooth; */
 }
 
 /* Scroll reveal base states */
@@ -39,6 +39,8 @@ html {
     --foreground: 222.2 47.4% 11.2%;
 
     --muted: 210 40% 96.1%;
+    --navbar-height: 70px; /* Navbar height for consistent positioning */
+
     --muted-foreground: 215.4 16.3% 46.9%;
 
     --popover: 0 0% 100%;
@@ -106,8 +108,14 @@ html {
     @apply border-border;
   }
 
+  html {
+    height: 100%;
+  }
+
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
+    margin: 0;
+    min-height: 100%;
   }
 }

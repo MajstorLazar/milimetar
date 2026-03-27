@@ -73,7 +73,7 @@ export const Hero = () => {
       {/* ── HERO BANNER ── */}
       <div
         id="hero"
-        className="relative text-base box-border caret-transparent flex flex-col h-[1000px] justify-end leading-4 pt-[250px] pb-10 md:text-xl md:leading-5 md:pt-[420px] md:pb-[120px]"
+        className="relative text-base box-border caret-transparent flex flex-col min-h-screen justify-end leading-4 pb-8 md:text-xl md:leading-5 md:pb-[60px]"
       >
         <div className="text-base box-border caret-transparent leading-4 min-h-[auto] min-w-[auto] px-5 md:text-xl md:leading-5">
           <div className="text-base box-border caret-transparent leading-4 max-w-[1296px] w-full mx-auto md:text-xl md:leading-5">
@@ -85,7 +85,7 @@ export const Hero = () => {
             <img
               src="https://c.animaapp.com/mn6pgklgyCd5dZ/assets/69158242d3a4d61ac864b4f6_backgraound-1.webp"
               alt="bg-1"
-              className="text-base box-border caret-transparent h-full leading-4 max-w-full min-h-[auto] min-w-[auto] object-cover w-full md:text-xl md:leading-5"
+              className="text-base box-border caret-transparent h-full leading-4 max-w-full min-h-[auto] min-w-[auto] object-cover w-full pointer-events-none md:text-xl md:leading-5"
             />
           </div>
         </div>
