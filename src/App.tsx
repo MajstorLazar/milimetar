@@ -24,7 +24,7 @@ export const App = () => {
 
   return (
     <div className="text-black text-base not-italic normal-nums font-normal accent-auto bg-white box-border caret-transparent block tracking-[normal] leading-4 list-outside list-disc min-h-full pointer-events-auto text-start indent-[0px] normal-case visible border-separate font-lato md:text-xl md:leading-5 overflow-x-hidden">
-      <div className="text-base box-border caret-transparent leading-4 overflow-x-clip md:text-xl md:leading-5">
+      <div className="text-base box-border caret-transparent leading-4 overflow-x-hidden md:text-xl md:leading-5">
         <Navbar />
         <Hero />
         <CTA />

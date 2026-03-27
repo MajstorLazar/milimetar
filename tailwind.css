@@ -5,6 +5,7 @@
 
 /* Smooth scrolling */
 html {
+  overscroll-behavior-y: none;
   scroll-behavior: smooth;
 }
 
